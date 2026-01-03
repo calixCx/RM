@@ -2,185 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For You, My RM</title>
+  <title>For You</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>.card {
-  background: rgba(0,0,0,0.6);
-  max-width: 720px;
-  padding: 45px;
-  border-radius: 16px;
-  border: 3px solid #b11313;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-}
-
+  <style>
     body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: 
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ba276707-fe1d-417c-aa5c-af799ca32d89/dg7529p-9b159381-54da-454e-ba3d-0af4687e73e5.jpg/v1/fill/w_1192,h_670,q_70,strp/jjk_background__tokyo_jujutsu_high_hallway_by_backgroundsacademia_dg7529p-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iYTI3NjcwNy1mZTFkLTQxN2MtYWE1Yy1hZjc5OWNhMzJkODkvZGc3NTI5cC05YjE1OTM4MS01NGRhLTQ1NGUtYmEzZC0wYWY0Njg3ZTczZTUuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.bDG0T4xuhhKKuzCjiRbCQmjNh3FIl94Z0bUEW2kWMLI");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  font-family: 'Georgia', serif;
-  padding: 20px;
-}
+      margin: 0;
+      padding: 40px 16px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #A7C7E7 0%, #BFD5F2 100%); /* pastel blue gradient */
+      font-family: Calibri, Candara, "Segoe UI", Optima, Arial, sans-serif;
+      color: #222222;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .letter {
+      max-width: 720px;
+      background: rgba(255, 255, 255, 0.95); /* semi-transparent para makita background */
+      padding: 56px 64px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 10;
+    }
 
     h1 {
       text-align: center;
-      margin-bottom: 40px;
+      font-weight: normal;
+      font-size: 28px;
+      margin: 0 0 32px;
     }
+
+    p {
+      margin: 0 0 18px;
+      text-align: left;
+    }
+
     .signature {
-      margin-top: 60px;
-      font-style: italic;
-      text-align: right;
+      margin-top: 32px;
+    }
+
+    /* ================= FLOATING HEARTS ================= */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff69b4;
+      transform: rotate(45deg);
+      animation: float 6s infinite linear;
+      opacity: 0.6;
+      z-index: 2;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff69b4;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 0.6; }
+      100% { transform: translateY(-20px) rotate(360deg); opacity: 0; }
+    }
+
+    /* ================= SPIDER WEB ================= */
+    .spider-web {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      width: 120px;
+      height: 120px;
+      opacity: 0.3;
+      z-index: 1;
+      animation: webPulse 4s ease-in-out infinite;
+    }
+
+    .web-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 2px solid #666;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .web-ring:nth-child(1) { width: 120px; height: 120px; animation-delay: 0s; }
+    .web-ring:nth-child(2) { width: 80px; height: 80px; animation-delay: -0.5s; }
+    .web-ring:nth-child(3) { width: 40px; height: 40px; animation-delay: -1s; }
+
+    .web-line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 120px;
+      background: linear-gradient(transparent 0%, #666 50%, transparent 100%);
+      transform-origin: center;
+    }
+
+    .web-line:nth-child(4) { transform: translate(-50%, -50%) rotate(0deg); }
+    .web-line:nth-child(5) { transform: translate(-50%, -50%) rotate(45deg); }
+    .web-line:nth-child(6) { transform: translate(-50%, -50%) rotate(90deg); }
+    .web-line:nth-child(7) { transform: translate(-50%, -50%) rotate(135deg); }
+
+    @keyframes webPulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.05); opacity: 0.5; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .letter { padding: 40px 30px; }
+      .spider-web { width: 80px; height: 80px; right: 5%; top: 5%; }
     }
   </style>
 </head>
 <body>
-
-<h1>My Favorite Stranger</h1>
-
-<p>Hi, my favorite stranger.</p>
-
-<p>
-Last 2025, I didn’t really have plans for myself. I was the type of person who just went with the flow. I didn’t have much motivation to become a better person, I felt like I was okay with who I was back then. Aside from waking up every day just to eat, work, and play, I didn’t really have anything else going on. Basically, I was just living because I had to.
-
-And especially, I had no plans to fall in love. I never imagined that I would.
-  
-
-But then you came, my perfect stranger.
-  
-
-Honestly, I never thought I would fall for someone in such a short span of time. As usual, it all started with a casual conversation. I don’t really know where or when I fell, but one thing I’m sure of is that after a long time, I finally felt certain again.
-
-I feel like I want to love this stranger for the rest of my life.
-  
-Maybe it sounds too fast, but I know myself. I know how to keep my words and how sincere I can be with someone I truly like.
-
-
-We talked almost every day, and every day, I felt like I wanted to wake up. unlike before, when I didn’t even want to get out of bed.
-
-
-This stranger motivates me so much. She makes me want to work on myself every day, and honestly, she’s the reason why.
-
-
-We’re truly opposites in life. Mine is boring, mysterious, and quiet. Her's is almost perfect- motivated, firm, and loud. She knows what she wants to be, while I’m still exploring how I want my life to turn out. I never thought she could be mine because I always felt like she was out of my league.
-
-I never told her how badly I wanted her, even though I really did. I was scared and confused. I felt like things would be difficult. I was scared of getting hurt in the end. I was scared that she might get bored of me after a few weeks of talking. I was confused if she really wanted me, if our feelings were truly mutual.
-
-Or maybe I was scared that I could never replace what her heart once felt before.
-
-
-I can’t always be by her side when she wants a hug. I can’t take her out on fancy dates. I can’t give her everything she wants, the way she had before.
-
-
-But I will try. I’m willing to.
-
-
-I want to be better than I was before. I want to grow. I want to work on myself so I can have her in my life.
-
-
-When she told me about her bad experience in the past, it made me want to love her even more every day.
-
-
-I want her to feel safe, seen, and loved- calmly but loudly. I want her to feel what real love truly means.
-
-I may not have anything special, but I will love her for as long as I’m here.
-
-
-I just want you to know that love isn’t always about mutual feelings. Love means choosing someone every single day. Love is a choice, and I choose to love her because I want my life to be with her.
-
-
-I want to explore all sides of her. Her good and bad, her flaws, her clingy side, everything. I want to understand how her mind works and how her heart feels. Even when we have misunderstandings, it will never be a reason for me to stop loving her.
-
-I want to show her what love is.
-
-To help her stay calm when emotions get heavy. 
-
-To communicate better during her overthinking moments.
-
-
-I’m always willing to listen. Even when I can’t relate sometimes, I’m happy being her safe space.
-
-And I always will be.
-
-
-My prayers always include her. I pray that what we have right now will last. I pray that she continues to heal from what she went through in the past.
-
-I’m willing to be her safety net so she can feel better, loved, and trusted.
-
-I hope she never feels the same pain again. That’s why I’m here. Loving her quietly but deeply, as much as I can.
-
-
-Maybe what we have right now feels too fast. Maybe we still don’t know everything about each other. But I’m always excited to be with you.
-
-~
-
-I like writing, but I’ve never written a letter for anyone before. This is my first time. I know you probably won’t believe me. LOL! 🤣
-
-~
-
-My baby, I hope you never forget how much I love you. Don’t ever think that I didn’t mean it.
-
-All these words are meant for you. Every single one of them, my RM.
-
-
-But if the time comes when you no longer want me, please be honest. I don’t want to be hurt again. And if we’re not meant for each other in the end, I still wish for your happiness. Just don’t hurt yourself or anyone else just to feel okay. Don’t repeat the same mistakes from before.
-
-I know you have fears too. Maybe my words aren’t enough, but I hope my actions will be. I rarely ask someone to stay, but here I am, asking you not to leave.
-I want us to work things out, slowly learning each other’s tempers, but steadily loving each other.
-
-
-Please tell me everything you feel. I’m always here to listen. There’s no reason to lie. we’re not kids anymore. So please don’t think that I’m unsure about you.
-
-~
-
-I promise myself, with God as my witness while I write this letter, that I will love you for the rest of my life and guide us in every decision we make. I promise that we will always include Him in our relationship.
-
-~
-
-Let’s grow together this time. I’ll let you become the person you want to be. I’ll support you as you work on yourself and chase your dreams. I’m always excited to see you grow and become an even better person.
-
-Let me love you while I’m also working on myself, while I’m still figuring out what kind of life I want- aside from wanting it with you. Let’s discover new things together, with love and respect, without pressure, doubt, or fear of losing each other.
-
-Let’s fix things together when times get tough.
-
-
-I’m excited to see your success, my baby. Whenever you feel tired, let me be your cheerleader. And always keep the good in you.
-
-
-I love you always, in all ways. No matter what happens.
-
-~
-
-I’m so thankful that I met you. Thank you for letting me feel this kind of love again.
-
-
-I hope you keep your words and promises. Most of all, I hope you can love me for who I am and what I have right now.
-
-
-I’ll be better, for myself and for you.
-That’s a promise <3
-
-
-You must look forward to seeing more letter like this. :)
-
-
-sorry baby mas okay ako sa English kasi mas comfy ako and I think mas sincere basahin, for me lang naman. hahahahahaha sana hindi ka na-cringe!! HAHAHAHAHAH
-
-Mahal na mahal kita, sungit! 😆🤟🏻
-
-</p>
-
-<p><em>All these words are meant for you, my RM.</em></p>
-
-<p class="signature">
-— Yours, always
-</p>
-
+  <!-- Floating hearts JS -->
+  <script>
+    for (let i = 0; i < 25; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      heart.style.animationDelay = Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <!-- Spider web -->
+  <div class="spider-web">
+    <div class="web-ring"></div>
+    <div class="web-ring"></div>
+    <div class="web-ring"></div>
+    <div class="web-line"></div>
+    <div class="web-line"></div>
+    <div class="web-line"></div>
+    <div class="web-line"></div>
+  </div>
+
+  <div class="letter">
+    <h1>My Love,</h1>
+
+    <p>Last 2025, I didn't really have plans for myself. I was the type of person who just went with the flow. I didn't have much motivation to become a better person, I felt like I was okay with who I was back then. Aside from waking up every day just to eat, work, and play, I didn't really have anything else going on. Basically, I was just living because I had to.</p>
+
+    <!-- PUT ALL YOUR PARAGRAPHS HERE - same as before -->
+    <p>And especially, I had no plans to fall in love. I never imagined that I would.</p>
+    <p>But then you came, my perfect stranger.</p>
+    <!-- ... continue with all your content ... -->
+
+    <p class="signature">
+      Love,<br>
+      Calix
+    </p>
+  </div>
 </body>
 </html>
