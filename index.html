@@ -1,4 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF
+  <meta charset="UTF-8">
+  <title>For You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Background ng buong page */
+    body {
+      margin: 0;
+      padding: 40px 16px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #A7C7E7; /* mas soft na beige */
+      font-family: "Calibri", "Times New Roman", serif;
+      color: #333333;
+      overflow: hidden; /* Para hindi overflow yung animations */
+      position: relative;
+    }
+
+    /* Parang papel na nasa gitna */
+    .letter {
+      max-width: 720px;
+      background: #ffffff;
+      padding: 56px 64px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+      border-radius: 6px;
+      line-height: 1.7;               /* mas airy basahin */
+      position: relative;
+      z-index: 20;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: normal;
+      font-size: 28px;
+      margin: 0 0 32px;
+    }
+
+    p {
+      margin: 0 0 18px;               /* space between paragraphs */
+      text-align: left;
+    }
+
+    /* Closing line (Love, Calix) */
+    .signature {
+      margin-top: 32px;
+    }
+
+    /* RED FLOATING HEARTS - 25 pcs nag-float from bottom [web:20][web:24] */
+    .heart {
+      position: fixed;
+      bottom: -50px;
+      width: 24px;
+      height: 24px;
+      background: #ff1493;
+      transform: rotate(45deg);
+      animation: floatHeart 7s infinite linear;
+      opacity: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: #ff1493;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+    }
+    .heart::before {
+      transform: rotate(-45deg) scale(1.2);
+      top: -12px;
+    }
+    .heart::after {
+      left: -12px;
+      top: 0;
+    }
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.9;
+        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: translateY(-50vh) translateX(20vw) rotate(180deg) scale(1.1);
+      }
+      100% {
+        transform: translateY(-100vh) translateX(-10vw) rotate(360deg) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    /* SPIDERMAN'S WEB SHOOTER - RED sticky webs sa top-right [web:28][web:29] */
+    .web-shooter {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background: radial-gradient(circle, #b22222 0%, #ff0000 70%);
+      border-radius: 50% 20% 50% 50%;
+      z-index: 15;
+      animation: webPulse 2.5s infinite;
+      box-shadow: 0 0 25px rgba(255, 20, 20, 0.7);
+      pointer-events: none;
+    }
+    @keyframes webPulse {
+      0%, 100% { transform: scale(1) rotate(0deg); box-shadow: 0 0 25px rgba(255, 20, 20, 0.7); }
+      50% { transform: scale(1.15) rotate(180deg); box-shadow: 0 0 40px rgba(255, 0, 0, 1); }
+    }
+
+    .web-line {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #ff4500, #ff0000, #ff4500, transparent);
+      border-radius: 3px;
+      opacity: 0;
+      transform-origin: right center;
+      animation: shootWeb 4s infinite ease-out;
+      box-shadow: 0 0 12px rgba(255, 69, 0, 0.8);
+    }
+    .web-line:nth-child(1) { animation-delay: 0s; transform: rotate(0deg); }
+    .web-line:nth-child(2) { animation-delay: 1.3s; transform: rotate(20deg); height: 3px; }
+    .web-line:nth-child(3) { animation-delay: 2.6s; transform: rotate(-15deg); height: 5px; }
+    @keyframes shootWeb {
+      0% {
+        width: 0;
+        opacity: 0;
+        right: 50%;
+      }
+      15% {
+        width: 160px;
+        opacity: 1;
+        right: 25px;
+      }
+      70% {
+        opacity: 0.7;
+        box-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
+      }
+      100% {
+        width: 220px;
+        opacity: 0;
+        right: -100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- SPIDERMAN'S WEB SHOOTER -->
+  <div class="web-shooter">
+    <div class="web-line"></div>
+    <div class="web-line"></div>
+    <div class="web-line"></div>
+  </div>
+
+  <div class="letter">
+    <h1>My Favorite Stranger,</h1>
+
+    <p>Last 2025, I didn’t really have plans for myself. I was the type of person who just went with the flow. I didn’t have much motivation to become a better person, I felt like I was okay with who I was back then. Aside from waking up every day just to eat, work, and play, I didn’t really have anything else going on. Basically, I was just living because I had to.</p>
+
+    <p>And especially, I had no plans to fall in love. I never imagined that I would.</p>
+
+    <p>But then you came, my perfect stranger.</p>
+
+    <p>Honestly, I never thought I would fall for someone in such a short span of time. As usual, it all started with a casual conversation. I don’t really know where or when I fell, but one thing I’m sure of is that after a long time, I finally felt certain again.</p>
+
+    <p>I feel like I want to love this stranger for the rest of my life. Maybe it sounds too fast, but I know myself. I know how to keep my words and how sincere I can be with someone I truly like.</p>
+
+    <p>We talked almost every day, and every day, I felt like I wanted to wake up, unlike before, when I didn’t even want to get out of bed.</p>
+
+    <p>This stranger motivates me so much. She makes me want to work on myself every day, and honestly, she’s the reason why.</p>
+
+    <p>We’re truly opposites in life. Mine is boring, mysterious, and quiet. Hers is almost perfect – motivated, firm, and loud. She knows what she wants to be, while I’m still exploring how I want my life to turn out. I never thought she could be mine because I always felt like she was out of my league.</p>
+
+    <p>I never told her how badly I wanted her, even though I really did. I was scared and confused. I felt like things would be difficult. I was scared of getting hurt in the end. I was scared that she might get bored of me after a few weeks of talking. I was confused if she really wanted me, if our feelings were truly mutual.</p>
+
+    <p>Or maybe I was scared that I could never replace what her heart once felt before.</p>
+
+    <p>I can’t always be by her side when she wants a hug. I can’t take her out on fancy dates. I can’t give her everything she wants, the way she had before.</p>
+
+    <p>But I will try. I’m willing to.</p>
+
+    <p>I want to be better than I was before. I want to grow. I want to work on myself so I can have her in my life.</p>
+
+    <p>When she told me about her bad experience in the past, it made me want to love her even more every day.</p>
+
+    <p>I want her to feel safe, seen, and loved – calmly but loudly. I want her to feel what real love truly means.</p>
+
+    <p>I may not have anything special, but I will love her for as long as I’m here.</p>
+
+    <p>I just want you to know that love isn’t always about mutual feelings. Love means choosing someone every single day. Love is a choice, and I choose to love her because I want my life to be with her.</p>
+
+    <p>I want to explore all sides of her. Her good and bad, her flaws, her clingy side, everything. I want to understand how her mind works and how her heart feels. Even when we have misunderstandings, it will never be a reason for me to stop loving her.</p>
+
+    <p>I want to show her what love is.</p>
+
+    <p>To help her stay calm when emotions get heavy.</p>
+
+    <p>To communicate better during her overthinking moments.</p>
+
+    <p>I’m always willing to listen. Even when I can’t relate sometimes, I’m happy being her safe space.</p>
+
+    <p>And I always will be.</p>
+
+    <p>My prayers always include her. I pray that what we have right now will last. I pray that she continues to heal from what she went through in the past.</p>
+
+    <p>I’m willing to be her safety net so she can feel better, loved, and trusted.</p>
+
+    <p>I hope she never feels the same pain again. That’s why I’m here. Loving her quietly but deeply, as much as I can.</p>
+
+    <p>Maybe what we have right now feels too fast. Maybe we still don’t know everything about each other. But I’m always excited to be with you.</p>
+
+    <p>~</p>
+
+    <p>I like writing, but I’ve never written a letter for anyone before. This is my first time. I know you probably won’t believe me. LOL!</p>
+
+    <p>~</p>
+
+    <p>My baby, I hope you never forget how much I love you. Don’t ever think that I didn’t mean it.</p>
+
+    <p>All these words are meant for you. Every single one of them, my RM.</p>
+
+    <p>But if the time comes when you no longer want me, please be honest. I don’t want to be hurt again. And if we’re not meant for each other in the end, I still wish for your happiness. Just don’t hurt yourself or anyone else just to feel okay. Don’t repeat the same mistakes from before.</p>
+
+    <p>I know you have fears too. Maybe my words aren’t enough, but I hope my actions will be. I rarely ask someone to stay, but here I am, asking you not to leave. I want us to work things out, slowly learning each other’s tempers, but steadily loving each other.</p>
+
+    <p>Please tell me everything you feel. I’m always here to listen. There’s no reason to lie. We’re not kids anymore. So please don’t think that I’m unsure about you.</p>
+
+    <p>~</p>
+
+    <p>I promise myself, with God as my witness while I write this letter, that I will love you for the rest of my life and guide us in every decision we make. I promise that we will always include Him in our relationship.</p>
+
+    <p>~</p>
+
+    <p>Let’s grow together this time. I’ll let you become the person you want to be. I’ll support you as you work on yourself and chase your dreams. I’m always excited to see you grow and become an even better person.</p>
+
+    <p>
